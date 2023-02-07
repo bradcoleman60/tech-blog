@@ -1,5 +1,5 @@
 // Import parts of sequelize library
-const { Model, DataTypes, INTEGER } = require("sequelize");
+const { Model, DataTypes } = require("sequelize");
 
 // Import connection from config.js
 const sequelize = require("../config/connection.js");
@@ -36,7 +36,7 @@ User.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "user",
+    modelName: 'user',
   }
 );
 

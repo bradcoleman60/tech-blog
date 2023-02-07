@@ -1,18 +1,19 @@
 // Import parts of sequelize library
-const { Model, DataTypes } = require("sequelize");
+const { Model, DataTypes, INTEGER } = require("sequelize");
 
 // Import connection from config.js
 const sequelize = require("../config/connection.js");
 
 // Require the User model
 // const User = require("./User");
+// const Entry = require("./Entry");
 
 // Initialize Entry model (ie table) by extending off Sequelize's Model Class
-class Entry extends Model {}
+class Comment extends Model {}
 
 //Create field names in Entry table
 
-Entry.init(
+Comment.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -21,25 +22,28 @@ Entry.init(
       autoIncrement: true,
     },
 
-    author_id: {
+    author: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'user',
-        key: 'id',
+        model: "user",
+        key: "id",
       },
     },
-    
-    blog_title: {
+    entry_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "entry",
+        key: 'id'
+      }
+    },
+
+    comment_text: {
       type: DataTypes.STRING,
       allowNull: false,
     },
 
-    blog_text: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-
-    date_posted: {
+    comment_date: {
       type: DataTypes.DATEONLY,
       defaultValue: DataTypes.NOW,
     },
@@ -49,8 +53,8 @@ Entry.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'entry',
+    modelName: "comment",
   }
 );
 
-module.exports = Entry;
+module.exports = Comment;
