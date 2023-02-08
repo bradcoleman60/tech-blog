@@ -26,4 +26,26 @@ router.get("/", async (req, res) => {
   }
 });
 
+// GET One Blog 
+
+router.get("/blog/:id", async (req, res) => {
+  try{
+  const blogEntry = await Entry.findByPk(req.params.id, {include: [{model: User, attributes:['user_name']}, {model: Comment , include : [{model: User }],  attributes: ['comment_text', 'comment_date']} ]});
+  
+  const blogDetail = blogEntry.get({ plain: true });
+      
+    console.log("BlogData:", blogDetail)
+    res.render("blog-details", {
+      blogDetail,
+      });
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+
+
+
 module.exports = router;

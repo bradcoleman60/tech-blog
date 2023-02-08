@@ -23,25 +23,31 @@ Entry.init(
 
     author_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: 'user',
         key: 'id',
       },
+      validate: {notNull: true}
     },
     
     blog_title: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {notNull: true}
     },
 
     blog_text: {
       type: DataTypes.TEXT,
       allowNull: false,
+      validate: {notNull: true}
     },
 
     date_posted: {
       type: DataTypes.DATEONLY,
       defaultValue: DataTypes.NOW,
+      allowNull: false,
+      validate: {notNull: true}
     },
   },
   {

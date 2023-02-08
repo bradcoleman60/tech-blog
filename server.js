@@ -11,7 +11,6 @@ const PORT = process.env.PORT || 3010;
 //make sure to add process.env for the database connection too!!!
 
 const hbs = exphbs.create({});
-
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 

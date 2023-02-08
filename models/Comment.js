@@ -27,6 +27,7 @@ Comment.init(
       references: {
         model: "user",
         key: "id",
+        validate: {notNull: true}
       },
     },
     entry_id: {
@@ -35,17 +36,21 @@ Comment.init(
       references: {
         model: "entry",
         key: 'id'
-      }
+      },
+      validate: {notNull: true}
     },
 
     comment_text: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {notNull: true}
     },
 
     comment_date: {
       type: DataTypes.DATEONLY,
       defaultValue: DataTypes.NOW,
+      allowNull: false,
+      validate: {notNull: true}
     },
   },
   {

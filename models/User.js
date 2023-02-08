@@ -20,6 +20,8 @@ User.init(
     user_name: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
+      validate: {notNull: true}
     },
     //Need to encrypt this
     password: {
@@ -27,7 +29,8 @@ User.init(
       allowNull: false,
       validate: {
         len:[8]
-      }
+      },
+      validate: {notNull: true}
     },
   },
 
