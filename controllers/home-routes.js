@@ -11,10 +11,11 @@ router.get("/", async (req, res) => {
       // include: [{ model: User }, { model: Comment }],
     
 
-    const entriesData = entries.map((entriesX) => {
-      entriesX.get({ plain: true });
+    const entriesData = entries.map((entriesX) => 
+      entriesX.get({ plain: true })
       
-    });
+    );
+    console.log("entriesData:", entriesData)
     res.render("homepage", {
       entriesData,
       });
