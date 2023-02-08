@@ -27,7 +27,8 @@ router.get("/", async (req, res) => {
 // Get entry by ID
 router.get("/:id", async (req, res) => {
     try{
-    const entries = await Entry.findByPk(req.params.id, {include: [{model: User}, {model: Comment }]});
+    const entries = await Entry.findByPk(req.params.id, {include: [{model: User}, {model: Comment , include : [{model: User }]} ]});
+    
     res.status(200).json(entries)
     } catch (err) {
         res.status(400).json.apply(err)

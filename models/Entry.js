@@ -14,12 +14,12 @@ class Entry extends Model {}
 
 Entry.init(
   {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
-    },
+    // id: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    //   primaryKey: true,
+    //   autoIncrement: true,
+    // },
 
     author_id: {
       type: DataTypes.INTEGER,

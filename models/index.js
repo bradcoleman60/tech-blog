@@ -27,11 +27,11 @@ Comment.belongsTo(Entry, {
 
 //User has many comments
 User.hasMany(Comment, {
-    foreignKey: 'author'
+    foreignKey: 'comment_author'
 })
 
 Comment.belongsTo(User,{
-    foreignKey: 'author'
+    foreignKey: 'comment_author'
 })
 
 module.exports = {User, Entry, Comment}
