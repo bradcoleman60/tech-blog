@@ -1,5 +1,6 @@
 const router = require("express").Router();
 
+const { where } = require("sequelize");
 const sequelize = require("../config/connection");
 
 const { User, Entry, Comment } = require("../models");
@@ -26,18 +27,22 @@ router.get("/", async (req, res) => {
   }
 });
 
-// GET One Blog 
+// GET One Blog with All Associated Comments and user_id and author_id's
 
 router.get("/blog/:id", async (req, res) => {
   try{
-  const blogEntry = await Entry.findByPk(req.params.id, {include: [{model: User, attributes:['user_name']}, {model: Comment , include : [{model: User }],  attributes: ['comment_text', 'comment_date']} ]});
+  const blogEntry = await Entry.findByPk(req.params.id, {include: [{model: User, attributes:['user_name']} ]});
+  
+  const blogComments = await Comment.findAll(  {include: {model: User} , where: {entry_id: req.params.id}} );
+  const blogCommentsArray = blogComments.map((comments) => 
+  comments.get({plain: true}))
   
   const blogDetail = blogEntry.get({ plain: true });
       
     console.log("BlogData:", blogDetail)
-    res.render("blog-details", {
-      blogDetail,
-      });
+    console.log("Comments", blogCommentsArray)
+    res.render("blog-details", { blogDetail, blogCommentsArray});
+      
 
   } catch (err) {
     console.log(err);

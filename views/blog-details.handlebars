@@ -5,12 +5,12 @@
           <div class="row">{{blogDetail.user.user_name}}</div>
           <div class="row">{{blogDetail.blog_title}}</div>
           <div class="row">{{blogDetail.blog_text}}</div>
-          <div class="row">{{blogDetail.comments.[0].comment_text}}</div>
-          <div class="row">{{blogDetail.comments.[0].comment_date}}</div>
-          <div class="row">{{blogDetail.comments.[0].user.username}}</div>
+          
           
         </div>
-      
-           
-        
+      <dir class="row border border-primary">
+           {{#each blogCommentsArray as |commentsX|}}
+            {{> blog-comments}}
+              {{/each}}
+        </dir>
       </div >
