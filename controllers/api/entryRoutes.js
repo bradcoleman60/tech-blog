@@ -6,7 +6,7 @@ const {User, Entry, Comment} = require('../../models')
 // Get all entries
 router.get("/", async (req, res) => {
     const entries = await Entry.findAll({
-        include: [{model: User}]
+        include: [{model: User}, {model: Comment }]
     });
     return res.json(entries)
     
@@ -27,7 +27,7 @@ router.get("/", async (req, res) => {
 // Get entry by ID
 router.get("/:id", async (req, res) => {
     try{
-    const entries = await Entry.findByPk(req.params.id);
+    const entries = await Entry.findByPk(req.params.id, {include: [{model: User}, {model: Comment }]});
     res.status(200).json(entries)
     } catch (err) {
         res.status(400).json.apply(err)

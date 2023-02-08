@@ -1,13 +1,13 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
 
-const {User, Entry} = require('../../models')
+const {User, Entry, Comment} = require('../../models')
 
 // Get All Users
 router.get('/', async (req, res) => {
     
     const usersData = await User.findAll({
-        include: [{model: Entry}]
+        include: [{model: Entry}, {model: Comment}]
         
     });
     

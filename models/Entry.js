@@ -35,7 +35,7 @@ Entry.init(
     },
 
     blog_text: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
 

@@ -17,10 +17,21 @@ Entry.belongsTo(User, {
 
 // Entry has many comments
 
-// Entry.hasMany(Comment, {
-//     foreignKey:
-// })
+Entry.hasMany(Comment, {
+    foreignKey:'entry_id'
+})
 
-// Comment.belongsTo(Entry)
+Comment.belongsTo(Entry, {
+    foreignKey: 'entry_id'
+})
+
+//User has many comments
+User.hasMany(Comment, {
+    foreignKey: 'author'
+})
+
+Comment.belongsTo(User,{
+    foreignKey: 'author'
+})
 
 module.exports = {User, Entry, Comment}
