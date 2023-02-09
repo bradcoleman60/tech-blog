@@ -1,16 +1,41 @@
 <div class="container">
           <div class="row border border-primary">
          
-          <div class="row">{{blogDetail.id}}</div>
-          <div class="row">{{blogDetail.user.user_name}}</div>
-          <div class="row">{{blogDetail.blog_title}}</div>
+          <div class="row fs-3 fw-bold">{{blogDetail.blog_title}}</div>
+          <div class="row">by:{{blogDetail.user.user_name}}</div>
           <div class="row">{{blogDetail.blog_text}}</div>
           
           
         </div>
-      <dir class="row border border-primary">
+        {{#if blogCommentsArray}}
+        <p class ="mt-5 ms-5 fs-5 fw-bold">User Comments</p>
+      <dir class="row border border-primary mx-5">
            {{#each blogCommentsArray as |commentsX|}}
             {{> blog-comments}}
               {{/each}}
         </dir>
+        {{/if}}
+        <dir class="d-grid gap-2 col-6 mx-auto">
+          <form class="new-comment-form">
+              <label for="author">
+              Comment Author:
+              </label><br/>
+                    <textarea name="comment_author" id="author_id" cols="30" rows="1">{{comment_author}}</textarea>
+                    <br/>
+                  <label for="entry_id">
+                      Entry ID:
+                    </label><br/>
+                    <textarea name="entry_id" id="entry_id" cols="30" rows="1">{{entry_id}}</textarea>
+                    <br/>
+                  <label for="comment">
+                    Comment:
+                  </label>
+                  <br/>
+                  <textarea name ="comment_text" id="comment_text"cols="30" rows="1">{{comment_text}}</textarea>
+                  
+                <button type="submit" value="Submit" class="btn btn-primary">Add A Comment</button>
+              </form>
+          </dir>      
       </div >
+
+<script src="/js/add-comment.js"> </script>

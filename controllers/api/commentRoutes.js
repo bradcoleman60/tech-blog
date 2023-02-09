@@ -1,7 +1,5 @@
 const router = require('express').Router();
-// const Entry = require('../../models/Entry');
-// const User = require('../../models/User')
-// const Comment = require('../../models/Comment')
+
 
 const {User, Entry, Comment} = require('../../models')
 
@@ -35,17 +33,30 @@ router.get("/:id", async (req, res) => {
     }
 });
 
-// Post a new comment
+// Post a new comment THIS WORKS
+// router.post("/", async (req, res) => {
+//     try{
+//     const newEntry = req.body;
+//     const entryData = await Comment.create(newEntry);
+//     return res.status(200).json(entryData)
+//     } catch (err) {
+//         res.status(400).json.apply(err)
+//     }
+// });
+
 router.post("/", async (req, res) => {
     try{
     const newEntry = req.body;
-    const entryData = await Comment.create(newEntry);
+    const entryData = await Comment.create({
+        comment_author: req.body.comment_author,
+        entry_id: req.body.entry_id,
+        comment_text: req.body.comment_text
+    });
     return res.status(200).json(entryData)
     } catch (err) {
         res.status(400).json.apply(err)
     }
 });
-
 
 // Update an exiting comment
 router.put("/:id", async (req, res) => {

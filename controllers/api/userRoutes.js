@@ -19,6 +19,7 @@ router.get('/', async (req, res) => {
 //Create new user
 
 router.post("/", async (req, res) => {
+    console.log(req.body)
     try {
         const newUser = req.body;
         newUser.password = await bcrypt.hash(req.body.password, 10);

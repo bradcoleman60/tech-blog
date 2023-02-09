@@ -1,9 +1,10 @@
 const router = require("express").Router();
 
-const { where } = require("sequelize");
+// const { where } = require("sequelize");
 const sequelize = require("../config/connection");
 
 const { User, Entry, Comment } = require("../models");
+
 
 //Get all Blogs for the Home Page
 router.get("/", async (req, res) => {
@@ -50,7 +51,16 @@ router.get("/blog/:id", async (req, res) => {
   }
 });
 
+router.get('/login', (req, res) => {
+  res.render('login');
+  
+  // if (req.session.loggedIn) {
+  //   res.redirect('/');
+  //   return;
+  // }
 
+  // res.render('login');
+});
 
 
 module.exports = router;

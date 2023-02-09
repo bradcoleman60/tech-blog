@@ -1,14 +1,11 @@
-const exp = require('constants');
+const path = require('path');
 const express = require('express');
-const sequelize =require('./config/connection');
-const routes = require('./controllers');
 const exphbs = require('express-handlebars');
-// const helpers = require('./utils/helpers');
 
 const app = express();
 const PORT = process.env.PORT || 3010;
 
-//make sure to add process.env for the database connection too!!!
+const sequelize =require('./config/connection');
 
 const hbs = exphbs.create({});
 app.engine('handlebars', hbs.engine);
@@ -16,8 +13,35 @@ app.set('view engine', 'handlebars');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
-// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
+
+const routes = require('./controllers');
+
 app.use(routes);
+
+// const helpers = require('./utils/helpers');
+const session = require('express-session');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+const exp = require('constants');
+
+const sess = {
+    secret: 'Super secret secret',
+    cookie: {},
+    //https://www.npmjs.com/package/express-session#resave
+    //Forces the session to be saved back to the session store, even if the session was never modified during the request.
+    resave: false,
+    //https://www.npmjs.com/package/express-session#saveuninitialized
+    //Forces a session that is "uninitialized" to be saved to the store. A session is uninitialized when it is new but not modified.
+    saveUninitialized: true,
+    store: new SequelizeStore({
+      db: sequelize
+    })
+  };
+
+  app.use(session(sess));
+
+
 
 // Sync Sequelize to Database and Turn on Server
 sequelize.sync().then(() => {
