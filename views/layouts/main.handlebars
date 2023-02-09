@@ -29,12 +29,18 @@
           <li class="nav-item">
             <a class="nav-link text-white disabled">Register</a>
           </li>
-          </dir>
+          {{#if logged_in}}
+            <li class="nav-item">
+            <a class="nav-link text-white">Log Out</a>
+          </li>
+          {{/if}}
+
+        </dir>
     </div>
     </nav>
   <body>
     
-    <h1>HERE IS THE LIST OF THE BLOGS</h1>
+    
     {{{body}}}
 
   

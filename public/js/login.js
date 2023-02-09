@@ -1,20 +1,23 @@
 const logInHandler = async (event) => {
     event.preventDefault();
 
-    const xusername = document.querySelector('#xuser-name').value.trim();
-    const xpassword = document.querySelector('#xpassword').value.trim();
+    const user_name = document.querySelector('#xuser-name').value.trim();
+    const password = document.querySelector('#xpassword').value.trim();
 
-    if (username && password) {
-        const response = await fetch('/api/users/', {
+    console.log("user_name" , user_name)
+    console.log("password" , password)
+
+    if (user_name && password) {
+        const response = await fetch('/api/users/login', {
             method: 'POST',
-            body: JSON.stringify({xusername, xpassword}),
+            body: JSON.stringify({user_name, password}),
             headers: {'Content-Type': 'application/json' },
         });
-
+        console.log(response)
         if (response.ok) {
             document.location.replace('/');
         } else {
-            alert ('Failed to log in');
+            alert (`Failed to log in ${user_name}`);
         }
     }
    
