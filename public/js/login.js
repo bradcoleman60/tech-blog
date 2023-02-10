@@ -43,6 +43,5 @@ if (response.ok) {
     }
 };
 
-
 document.querySelector('.login-form').addEventListener('submit', logInHandler);
 document.querySelector('.registration-form').addEventListener('submit', registrationHandler);

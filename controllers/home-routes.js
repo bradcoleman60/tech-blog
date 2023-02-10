@@ -1,5 +1,6 @@
 const router = require("express").Router();
 
+const { where } = require("sequelize");
 // const { where } = require("sequelize");
 const sequelize = require("../config/connection");
 
@@ -18,10 +19,13 @@ router.get("/", async (req, res) => {
       
     );
     console.log("entriesData:", entriesData)
+    // console.log("logged in? ", logged_in)
     res.render("homepage", {
       entriesData,
+      logged_in: req.session.logged_in,
       });
 
+      
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -42,7 +46,7 @@ router.get("/blog/:id", async (req, res) => {
       
     console.log("BlogData:", blogDetail)
     console.log("Comments", blogCommentsArray)
-    res.render("blog-details", { blogDetail, blogCommentsArray});
+    res.render("blog-details", { blogDetail, blogCommentsArray, logged_in: req.session.logged_in});
       
 
   } catch (err) {
@@ -50,6 +54,28 @@ router.get("/blog/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+//Get blogs for the logged in user
+router.get("/dashboard", async (req, res) => {
+  try{
+  const blogEntry = await Entry.findAll({include: {model: User}, where: {author_id: req.session.user_id} });
+  
+  
+  const blogDetail = blogEntry.map((data) => data.get({plain: true}))
+  
+  // const blogDetail = blogEntry.get({ plain: true });
+      
+    console.log("BlogData:", blogDetail)
+    
+    res.render("dashboard", { blogDetail, logged_in: req.session.logged_in});
+      
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 
 router.get('/login', (req, res) => {
   res.render('login');

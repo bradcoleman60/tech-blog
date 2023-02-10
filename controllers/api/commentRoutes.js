@@ -11,17 +11,6 @@ router.get("/", async (req, res) => {
     return res.json(entries)
     
 });
-///
-// try{
-//     const entries = await Entry.findAll({
-//         include: [{model: User}]
-//     });
-//     res.status(200).json(entries)
-//     } catch (err) {
-//         res.status(400).json.apply(err)
-//     }
-// });
-
 
 // Get comment by ID
 router.get("/:id", async (req, res) => {
@@ -33,17 +22,7 @@ router.get("/:id", async (req, res) => {
     }
 });
 
-// Post a new comment THIS WORKS
-// router.post("/", async (req, res) => {
-//     try{
-//     const newEntry = req.body;
-//     const entryData = await Comment.create(newEntry);
-//     return res.status(200).json(entryData)
-//     } catch (err) {
-//         res.status(400).json.apply(err)
-//     }
-// });
-
+// Post a new comment 
 router.post("/", async (req, res) => {
     try{
     const newEntry = req.body;

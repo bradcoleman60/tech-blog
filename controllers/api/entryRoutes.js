@@ -35,16 +35,33 @@ router.get("/:id", async (req, res) => {
     }
 });
 
-// Post a new Entry
+// // Post a new Entry
+// router.post("/", async (req, res) => {
+//     try{
+//     const newEntry = req.body;
+//     const entryData = await Entry.create(newEntry);
+//     return res.status(200).json(entryData)
+//     } catch (err) {
+//         res.status(400).json.apply(err)
+//     }
+// });
+
+// Post a new Blog Entry ////////////
 router.post("/", async (req, res) => {
     try{
     const newEntry = req.body;
-    const entryData = await Entry.create(newEntry);
+    console.log(newEntry)
+    const entryData = await Entry.create({
+        author_id: req.session.user_id,
+        blog_text: req.body.blog_title,
+        blog_text: req.body.blog_text
+    });
     return res.status(200).json(entryData)
     } catch (err) {
         res.status(400).json.apply(err)
     }
 });
+
 
 
 // Update an exiting entry
@@ -60,7 +77,7 @@ router.put("/:id", async (req, res) => {
     }
 })
 
-// Update an exiting entry
+// Delete an exiting entry
 router.delete("/:id", async (req, res) => {
     try{
     const entryData = await Entry.destroy({

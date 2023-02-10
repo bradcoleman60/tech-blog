@@ -4,6 +4,8 @@ const { Model, DataTypes } = require("sequelize");
 // Import connection from config.js
 const sequelize = require("../config/connection.js");
 
+const bcrypt = require('bcrypt');
+
 // Initialize Entry model (ie table) by extending off Sequelize's Model Class
 class User extends Model {}
 
@@ -33,14 +35,22 @@ User.init(
       validate: {notNull: true}
     },
   },
+{
+  hooks: {
+    beforeCreate: async (newUser) => {
+        const salt = 12;
+        newUser.password = await bcrypt.hash(newUser.password, salt);
+        return newUser;
+    },
+  },
 
-  {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: 'user',
-  }
+  },
+
 );
 
 module.exports = User;

@@ -23,7 +23,7 @@ router.post("/", async (req, res) => {
     console.log(req.body)
     try {
         const newUser = req.body;
-        newUser.password = await bcrypt.hash(req.body.password, 10);
+        // newUser.password = await bcrypt.hash(req.body.password, 10);
         const userData = await User.create(newUser);
         return res.status(200).json(userData);
                            
@@ -52,17 +52,7 @@ router.post('/login', async (req, res) => {
         console.log("the password entered:", req.body.password),
         console.log("this is the password from mysql:", userData.dataValues.password)
 
-        // const validatePassword = await bcrypt.compare(req.body.password, userData.dataValues.password, function(err, result) {
-        //         if(result) {
-        //             console.log("it matches")
-        //         } else {
-        //             console.log("invalid password")
-        //         } return
-        // } 
-        // );
-
         const validatePassword = await bcrypt.compare(req.body.password, userData.dataValues.password)
-
 
         console.log("this is the output of validatePassword " , validatePassword)
 
@@ -73,16 +63,18 @@ router.post('/login', async (req, res) => {
             return;
         }
         
-        console.log("the user that logged in is: ", userData.dataValues.id)
-        console.log("the user name  that logged in is: ", userData.dataValues.user_name)
+        //This Saves user id and a variable called "logged_in" as true to the session table. 
         req.session.save(() => {
 
             req.session.user_id = userData.dataValues.id;
             req.session.logged_in = true;
-            console.log("executed?" ,req.session)
             res.json({user: userData, message:'You are now logged in'});
             
         });
+        res.render('homepage', {
+            logged_in: req.session.logged_in,
+          });
+
     } catch (err) {
         res.status(400).json(err)
     }
@@ -97,7 +89,5 @@ router.post('/logout', (req, res) => {
         res.status.apply(404).end();
     }
 });
-
-
 
 module.exports = router

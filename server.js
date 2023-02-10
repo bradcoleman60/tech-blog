@@ -17,8 +17,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const routes = require('./controllers');
 
-app.use(routes);
-
 // const helpers = require('./utils/helpers');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -27,13 +25,9 @@ const exp = require('constants');
 
 const sess = {
     secret: 'Super secret secret',
-    cookie: {},
-    //https://www.npmjs.com/package/express-session#resave
-    //Forces the session to be saved back to the session store, even if the session was never modified during the request.
+    // cookie: {},
     resave: false,
-    //https://www.npmjs.com/package/express-session#saveuninitialized
-    //Forces a session that is "uninitialized" to be saved to the store. A session is uninitialized when it is new but not modified.
-    saveUninitialized: true,
+    saveUninitialized: false,
     store: new SequelizeStore({
       db: sequelize
     })
@@ -41,7 +35,7 @@ const sess = {
 
   app.use(session(sess));
 
-
+  app.use(routes);
 
 // Sync Sequelize to Database and Turn on Server
 sequelize.sync().then(() => {

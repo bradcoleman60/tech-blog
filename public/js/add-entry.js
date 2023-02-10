@@ -1,0 +1,34 @@
+async function newEntryHandler (event){
+    event.preventDefault();
+    
+    const entry_title = document.querySelector('#entry-title').value;
+    const entry_text = document.querySelector('#entry-text').value;
+    const author_id = document.querySelector('form[name="new-blog"]').id;
+    
+    console.log("title", entry_title)
+    console.log("text", entry_text)
+    
+    
+    const response = await fetch ('/api/entry/',{
+        method: 'POST',
+        body: JSON.stringify({
+            entry_title,
+            entry_text
+            
+        }),
+        headers: {'Content-Type': 'application/json',
+    },
+    });
+    
+//if comment is added then the blog detail page will be rerendered 
+if (response.ok){
+    // document.location.replace('/blog/')
+    document.location.reload();
+} else {
+    alert('failed to load comment')
+}
+
+
+}
+
+document.querySelector('.new-entry-form').addEventListener('submit', newEntryHandler);

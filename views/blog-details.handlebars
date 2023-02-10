@@ -3,7 +3,7 @@
          
           <div class="row fs-3 fw-bold">{{blogDetail.blog_title}}</div>
           <div class="row">by:{{blogDetail.user.user_name}}</div>
-          <div class="row">{{blogDetail.blog_text}}</div>
+          <div class="row" name="blog-detail" id="{{blogDetail.id}}">{{blogDetail.blog_text}}</div>
           
           
         </div>
@@ -22,11 +22,7 @@
               </label><br/>
                     <textarea name="comment_author" id="author_id" cols="30" rows="1">{{comment_author}}</textarea>
                     <br/>
-                  <label for="entry_id">
-                      Entry ID:
-                    </label><br/>
-                    <textarea name="entry_id" id="entry_id" cols="30" rows="1">{{entry_id}}</textarea>
-                    <br/>
+                  
                   <label for="comment">
                     Comment:
                   </label>
