@@ -4,8 +4,7 @@
           <div class="row fs-3 fw-bold">{{blogDetail.blog_title}}</div>
           <div class="row">by:{{blogDetail.user.user_name}}</div>
           <div class="row" name="blog-detail" id="{{blogDetail.id}}">{{blogDetail.blog_text}}</div>
-          
-          
+                    
         </div>
         {{#if blogCommentsArray}}
         <p class ="mt-5 ms-5 fs-5 fw-bold">User Comments</p>
@@ -16,19 +15,14 @@
         </dir>
         {{/if}}
         <dir class="d-grid gap-2 col-6 mx-auto">
-          <form class="new-comment-form">
-              <label for="author">
-              Comment Author:
-              </label><br/>
-                    <textarea name="comment_author" id="author_id" cols="30" rows="1">{{comment_author}}</textarea>
-                    <br/>
-                  
+          <form class="new-comment-form" name="new-comment" id="{{user_id}}">
+                                              
                   <label for="comment">
                     Comment:
                   </label>
                   <br/>
-                  <textarea name ="comment_text" id="comment_text"cols="30" rows="1">{{comment_text}}</textarea>
-                  
+                  <textarea name ="comment_text" id="comment_text"cols="50" rows="5">{{comment_text}}</textarea>
+                  <br/>
                 <button type="submit" value="Submit" class="btn btn-primary">Add A Comment</button>
               </form>
           </dir>      

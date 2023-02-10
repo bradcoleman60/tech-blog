@@ -7,11 +7,13 @@ async function newEntryHandler (event){
     
     console.log("title", entry_title)
     console.log("text", entry_text)
+    console.log("author id", author_id)
     
     
-    const response = await fetch ('/api/entry/',{
+    const response = await fetch ('/api/entries/',{
         method: 'POST',
         body: JSON.stringify({
+            author_id,
             entry_title,
             entry_text
             
@@ -20,12 +22,12 @@ async function newEntryHandler (event){
     },
     });
     
-//if comment is added then the blog detail page will be rerendered 
+//if entry is added then the blog detail page will be rerendered 
 if (response.ok){
     // document.location.replace('/blog/')
     document.location.reload();
 } else {
-    alert('failed to load comment')
+    alert('failed to load blog entry')
 }
 
 

@@ -1,5 +1,6 @@
 <div>
-<p>THIS IS A TEST OF THE DASHBOARD</p>
+<p>Blogs For:</p>
+{{blogDetail.user.user_name}}
 
 </div>
 
@@ -18,7 +19,7 @@
 {{/each}}
 
 <dir class="d-grid gap-2 col-6 mx-auto">
-    <form name="new-blog" class="new-entry-form" id="{{user.id}}">
+    <form name="new-blog" class="new-entry-form" id="{{user_id}}">
         <label for="entry-title">
            Blog Title:
               </label><br/>

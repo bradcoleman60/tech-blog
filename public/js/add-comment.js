@@ -1,7 +1,8 @@
 async function newCommentHandler (event){
     event.preventDefault();
     //define input fields note - will replace author with active user
-    const comment_author = document.querySelector('#author_id').value;
+    // const comment_author = document.querySelector('#author_id').value;
+    const comment_author = document.querySelector('form[name="new-comment"]').id;
     const comment_text = document.querySelector('#comment_text').value;
     const entry_id = document.querySelector('div[name="blog-detail"]').id;
     

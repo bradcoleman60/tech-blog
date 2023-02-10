@@ -46,7 +46,7 @@ router.get("/blog/:id", async (req, res) => {
       
     console.log("BlogData:", blogDetail)
     console.log("Comments", blogCommentsArray)
-    res.render("blog-details", { blogDetail, blogCommentsArray, logged_in: req.session.logged_in});
+    res.render("blog-details", { blogDetail, blogCommentsArray, logged_in: req.session.logged_in, user_id : req.session.user_id});
       
 
   } catch (err) {
@@ -56,7 +56,7 @@ router.get("/blog/:id", async (req, res) => {
 });
 
 //Get blogs for the logged in user
-router.get("/dashboard", async (req, res) => {
+router.get("/dashboard/", async (req, res) => {
   try{
   const blogEntry = await Entry.findAll({include: {model: User}, where: {author_id: req.session.user_id} });
   
@@ -66,8 +66,9 @@ router.get("/dashboard", async (req, res) => {
   // const blogDetail = blogEntry.get({ plain: true });
       
     console.log("BlogData:", blogDetail)
+    console.log("req.session user id:", req.session.user_id)
     
-    res.render("dashboard", { blogDetail, logged_in: req.session.logged_in});
+    res.render("dashboard", { blogDetail, logged_in: req.session.logged_in, user_id: req.session.user_id});
       
 
   } catch (err) {

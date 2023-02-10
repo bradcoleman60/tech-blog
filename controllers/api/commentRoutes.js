@@ -42,8 +42,8 @@ router.put("/:id", async (req, res) => {
     try{
     const updatedEntry = req.body;
     const entryData = await Comment.update(updatedEntry, {
-        where: {id: req.params.id} // probably need to add a user_id here to
-    });
+        where: {id: req.params.id} 
+        });
     return res.status(200).json(entryData)
     } catch (err) {
         res.status(400).json.apply(err)

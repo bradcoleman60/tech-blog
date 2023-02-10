@@ -11,17 +11,6 @@ router.get("/", async (req, res) => {
     return res.json(entries)
     
 });
-///
-// try{
-//     const entries = await Entry.findAll({
-//         include: [{model: User}]
-//     });
-//     res.status(200).json(entries)
-//     } catch (err) {
-//         res.status(400).json.apply(err)
-//     }
-// });
-
 
 
 // Get entry by ID
@@ -35,26 +24,17 @@ router.get("/:id", async (req, res) => {
     }
 });
 
-// // Post a new Entry
-// router.post("/", async (req, res) => {
-//     try{
-//     const newEntry = req.body;
-//     const entryData = await Entry.create(newEntry);
-//     return res.status(200).json(entryData)
-//     } catch (err) {
-//         res.status(400).json.apply(err)
-//     }
-// });
 
 // Post a new Blog Entry ////////////
 router.post("/", async (req, res) => {
+    
     try{
     const newEntry = req.body;
-    console.log(newEntry)
+    
     const entryData = await Entry.create({
-        author_id: req.session.user_id,
-        blog_text: req.body.blog_title,
-        blog_text: req.body.blog_text
+        author_id: req.body.author_id,
+        blog_title: req.body.entry_title,
+        blog_text: req.body.entry_text
     });
     return res.status(200).json(entryData)
     } catch (err) {
