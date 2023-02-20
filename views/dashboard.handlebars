@@ -1,39 +1,50 @@
 <div>
-<p>Blogs For:</p>
-{{blogDetail.user.user_name}}
+  <p>Blogs For:</p>
+  {{blogDetail.user.user_name}}
 
 </div>
 
 {{#each blogDetail as |post|}}
 <div class="container">
-  <a style="text-decoration: none" href="/blog/{{id}}">
-    <div class="row border border-primary p-3 m-2">
-      <div class="col-md-8 fs-5 fw-bold">{{blog_title}}</div>
-      <div class="col-md-2">{{user.user_name}}</div>
-      <div class="col-md-2">{{date_posted}}</div>
-      <div class="col-md-2">{{user.id}}</div>
+  <div class="row ">
+    <div class="col-6">
+      <a style="text-decoration: none" href="/blog/{{id}}">
+        <div class="row border border-primary p-3 m-2">
+          <div class="col-md-6 fs-5 fw-bold">{{blog_title}}</div>
+          {{!-- <div class="col-md-2">{{user.user_name}}</div> --}}
+          <div class="col-md-4">{{date_posted}}</div>
+          {{!-- <div class="col-md-2">{{user.id}}</div> --}}
+
+        
+        </div>
+      </a>
     </div>
-  </a>
+    <div class="col-4">
+      <a style="text-decoration: none" href="/blog/edit/{{id}}">
+      <button class="col-md-2" id="edit-btn">Edit</button>
+      </a>
+    </div>
 
-</div>
-{{/each}}
+  </div>
+   </div>
+  {{/each}}
 
-<dir class="d-grid gap-2 col-6 mx-auto">
+  <dir class="d-grid gap-2 col-6 mx-auto">
     <form name="new-blog" class="new-entry-form" id="{{user_id}}">
-        <label for="entry-title">
-           Blog Title:
-              </label><br/>
-                    <textarea name="entry-title" id="entry-title" cols="50" rows="1">{{blog_title}}</textarea>
-                    <br/>
-                  
-                  <label for="entry-text">
-                    Blog Text :
-                  </label>
-                  <br/>
-                  <textarea name ="entry-text" id="entry-text"cols="50" rows="3">{{blog_text}}</textarea>
-                  <br/>
-                <button type="submit" value="Submit" class="btn btn-primary">Add A New Blog Entry</button>
-              </form>
-          </dir>      
+      <label for="entry-title">
+        Blog Title:
+      </label><br />
+      <textarea name="entry-title" id="entry-title" cols="50" rows="1">{{blog_title}}</textarea>
+      <br />
 
-          <script src="/js/add-entry.js"> </script>
+      <label for="entry-text">
+        Blog Text :
+      </label>
+      <br />
+      <textarea name="entry-text" id="entry-text" cols="50" rows="3">{{blog_text}}</textarea>
+      <br />
+      <button type="submit" value="Submit" class="btn btn-primary">Add A New Blog Entry</button>
+    </form>
+  </dir>
+
+  <script src="/js/add-entry.js"> </script>

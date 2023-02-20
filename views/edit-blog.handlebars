@@ -1,0 +1,22 @@
+
+
+
+<dir class="d-grid gap-2 col-6 mx-auto">
+    <form name="new-blog" class="new-entry-form" id="{{user_id}}">
+        <label for="entry-title">
+           Blog Title:
+              </label><br/>
+                    <textarea name="entry-title" id="entry-title" cols="50" rows="1">{{blogDetail.blog_title}}</textarea>
+                    <br/>
+                  
+                  <label for="entry-text">
+                    Blog Text :
+                  </label>
+                  <br/>
+                  <textarea name ="entry-text" id="entry-text"cols="50" rows="3">{{blogDetail.blog_text}}</textarea>
+                  <br/>
+                <button type="submit" value="Submit" class="btn btn-primary">Update This Blog Post</button>
+              </form>
+          </dir>      
+
+          {{!-- <script src="/js/add-entry.js"> </script> --}}
