@@ -48,8 +48,10 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
     try{
     const updatedEntry = req.body;
+    console.log("THIS IS FROM THE req.body" ,updatedEntry)
+    console.log("this is the entry id:", parseInt(req.body.id))
     const entryData = await Entry.update(updatedEntry, {
-        where: {id: req.params.id} // probably need to add a user_id here to
+        where: {id: parseInt(req.body.id)} // probably need to add a user_id here to
     });
     return res.status(200).json(entryData)
     } catch (err) {
