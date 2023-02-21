@@ -1,0 +1,17 @@
+#navbar {
+    font-size: 25px;
+
+}
+
+#dashboard{
+    text-align: center;
+}
+
+#add-blog-form{
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+  }

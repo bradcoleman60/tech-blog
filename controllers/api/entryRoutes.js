@@ -62,8 +62,9 @@ router.put("/:id", async (req, res) => {
 // Delete an exiting entry
 router.delete("/:id", async (req, res) => {
     try{
-    const entryData = await Entry.destroy({
-        where: {id: req.params.id} 
+    console.log("id to delete:", parseInt(req.body.id))
+    Entry.destroy({
+        where: {id: parseInt(req.body.id)} 
         });
     return res.status(200).json(req.body)
     } catch (err) {

@@ -1,34 +1,35 @@
-<div>
-  <p>Blogs For:</p>
-  {{blogDetail.user.user_name}}
+<div class="w-75 ms-5 align-self-center border border-primary">
 
-</div>
-
+<div class="container my-5" id="dashboard">
+  <h1>My Blogs</h1>
+  </div>
 {{#each blogDetail as |post|}}
-<div class="container">
-  <div class="row ">
-    <div class="col-6">
+<div class="container" name="blog-card">
+  <div class="row border border-primary ">
+    <div class="col-10">
       <a style="text-decoration: none" href="/blog/{{id}}">
         <div class="row border border-primary p-3 m-2">
           <div class="col-md-6 fs-5 fw-bold">{{blog_title}}</div>
-          {{!-- <div class="col-md-2">{{user.user_name}}</div> --}}
           <div class="col-md-4">{{date_posted}}</div>
-          {{!-- <div class="col-md-2">{{user.id}}</div> --}}
-
-        
+          
         </div>
       </a>
     </div>
-    <div class="col-4">
+    <div class="col-2">
       <a style="text-decoration: none" href="/blog/edit/{{id}}">
-      <button class="col-md-2" id="edit-btn">Edit</button>
+      <button class="btn btn-warning" id="edit-btn">Edit / Delete</button>
       </a>
+       {{!-- <a style="text-decoration: none" >
+      <button class="btn btn-danger" id="delete-btn" blog_ID="{{id}}">Delete</button>
+      </a> --}}
     </div>
 
   </div>
    </div>
   {{/each}}
-
+<div class="container my-5" id="add-blog-form">
+  <h1>Add A New Blog Entry</h1>
+</div>
   <dir class="d-grid gap-2 col-6 mx-auto">
     <form name="new-blog" class="new-entry-form" id="{{user_id}}">
       <label for="entry-title">
@@ -47,4 +48,7 @@
     </form>
   </dir>
 
+  </div>
+
   <script src="/js/add-entry.js"> </script>
+  

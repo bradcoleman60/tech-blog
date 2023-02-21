@@ -18,20 +18,24 @@ Entry.belongsTo(User, {
 // Entry has many comments
 
 Entry.hasMany(Comment, {
-    foreignKey:'entry_id'
+    foreignKey:'entry_id',
+    onDelete: 'CASCADE'
 })
 
 Comment.belongsTo(Entry, {
-    foreignKey: 'entry_id'
+    foreignKey: 'entry_id',
+    onDelete: 'CASCADE'
 })
 
 //User has many comments
 User.hasMany(Comment, {
-    foreignKey: 'comment_author'
+    foreignKey: 'comment_author',
+    onDelete: 'CASCADE'
 })
 
 Comment.belongsTo(User,{
-    foreignKey: 'comment_author'
+    foreignKey: 'comment_author',
+    onDelete: 'CASCADE'
 })
 
 module.exports = {User, Entry, Comment}

@@ -16,9 +16,10 @@
                   <textarea name ="entry-text" id="entry-text"cols="50" rows="3">{{blogDetail.blog_text}}</textarea>
                   <br/>
                 <button type="submit" value="Submit" id="edit-btn" class="btn btn-primary">Update This Blog Post</button>
-               
+                <button type="submit" value="Submit" id="delete-btn" class="btn btn-warning" blog_ID="{{blogDetail.id}}">Delete This Blog Post</button>
               </form>
-               <button onclick="history.back()" type="submit" value="Submit" class="btn btn-primary">Cancel</button>
+               <button onclick="history.back()" type="submit" value="Submit" class="btn btn-primary" >Cancel</button>
           </dir>      
 
           <script src="/js/edit-entry.js"> </script>
+          <script src="/js/delete-entry.js"> </script>
