@@ -15,11 +15,16 @@
                   <br/>
                   <textarea name ="entry-text" id="entry-text"cols="50" rows="3">{{blogDetail.blog_text}}</textarea>
                   <br/>
-                <button type="submit" value="Submit" id="edit-btn" class="btn btn-primary">Update This Blog Post</button>
-                <button type="submit" value="Submit" id="delete-btn" class="btn btn-warning" blog_ID="{{blogDetail.id}}">Delete This Blog Post</button>
+                <button type="submit" value="Submit" id="edit-btn" class="btn btn-warning">Update This Blog Post</button>
+                <button type="submit" value="Submit" id="delete-btn" class="btn btn-danger" blog_ID="{{blogDetail.id}}">Delete This Blog Post</button>
+                <button type="submit" value="Submit" id="cancel-btn" class="btn btn-primary" >Cancel</button>
               </form>
-               <button onclick="history.back()" type="submit" value="Submit" class="btn btn-primary" >Cancel</button>
+              <form>
+                   
+                
+          </form>
           </dir>      
 
           <script src="/js/edit-entry.js"> </script>
           <script src="/js/delete-entry.js"> </script>
+          <script src="/js/cancel.js"> </script>
