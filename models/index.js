@@ -3,12 +3,14 @@ const User = require('./User');
 const Entry = require('./Entry');
 const Comment = require('./Comment');
 
+// const {User, Entry, Comment} = require("./models")
 // const { Model } = require('sequelize');
 
 //Users have many entries and entries belong to users
 
 User.hasMany(Entry, {
     foreignKey: 'author_id',
+    onDelete: 'CASCADE'
 });
 
 Entry.belongsTo(User, {
@@ -24,18 +26,16 @@ Entry.hasMany(Comment, {
 
 Comment.belongsTo(Entry, {
     foreignKey: 'entry_id',
-    onDelete: 'CASCADE'
+   
 })
 
 //User has many comments
 User.hasMany(Comment, {
-    foreignKey: 'comment_author',
-    onDelete: 'CASCADE'
+    foreignKey: 'comment_author'
 })
 
 Comment.belongsTo(User,{
-    foreignKey: 'comment_author',
-    onDelete: 'CASCADE'
+    foreignKey: 'comment_author'
 })
 
-module.exports = {User, Entry, Comment}
+module.exports = { User, Entry, Comment }

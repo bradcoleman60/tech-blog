@@ -1,4 +1,4 @@
-<div class="w-75 ms-5 align-self-center border border-primary">
+<div class="w-75 ms-5 align-self-center ">
 
 <div class="container my-5" id="dashboard">
   <h1>My Blogs</h1>
@@ -19,55 +19,32 @@
       <a style="text-decoration: none" href="/blog/edit/{{id}}">
       <button class="btn btn-warning" id="edit-btn">Edit / Delete</button>
       </a>
-       {{!-- <a style="text-decoration: none" >
-      <button class="btn btn-danger" id="delete-btn" blog_ID="{{id}}">Delete</button>
-      </a> --}}
     </div>
 
   </div>
    </div>
   {{/each}}
 
-{{!-- <div class="container my-5" id="add-blog-form">
-  <h1>Add A New Blog Entry</h1>
-</div>
-  <dir class="d-grid gap-2 col-6 mx-auto">
-    <form name="new-blog" class="new-entry-form" id="{{user_id}}">
-      <label for="entry-title">
-        Blog Title:
-      </label><br />
-      <textarea name="entry-title" id="entry-title" cols="50" rows="1">{{blog_title}}</textarea>
-      <br />
 
-      <label for="entry-text">
-        Blog Text :
-      </label>
-      <br />
-      <textarea name="entry-text" id="entry-text" cols="50" rows="3">{{blog_text}}</textarea>
-      <br />
-      <button type="submit" value="Submit" class="btn btn-primary">Add A New Blog Entry</button>
-    </form>
-  </dir> --}}
+<button type="button" class="btn btn-primary my-5" data-bs-toggle="modal" data-bs-target="#exampleModal">Create A New Blog Post</button>
 
-  {{!-- </div> --}}
-
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Create A New Blog Post</button>
+{{!-- <button type="button" class="btn btn-primary my-5" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" >Create A New Blog Post</button> --}}
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New Blog Post</h5>
+        <h5 class="modal-title fs-5 fw-bold" id="exampleModalLabel">New Blog Post</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form name="new-blog-m" class="new-entry-form-m" id="{{user_id}}">
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Title:</label>
+            <label for="recipient-name" class="col-form-label fs-5 fw-bold">Title:</label>
             <input type="text" name="entry-title-m" id="entry-title-m"  class="form-control" >
           </div>
           <div class="mb-3">
-            <label for="message-text" class="col-form-label">Text:</label>
+            <label for="message-text" class="col-form-label fs-5 fw-bold">Text:</label>
             <textarea name="entry-text-m" id="entry-text-m" class="form-control" ></textarea>
           </div>
         {{!-- </form> --}}

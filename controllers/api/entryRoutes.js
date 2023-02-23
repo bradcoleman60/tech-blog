@@ -51,7 +51,7 @@ router.put("/:id", async (req, res) => {
     console.log("THIS IS FROM THE req.body" ,updatedEntry)
     console.log("this is the entry id:", parseInt(req.body.id))
     const entryData = await Entry.update(updatedEntry, {
-        where: {id: parseInt(req.body.id)} // probably need to add a user_id here to
+        where: {id: parseInt(req.body.id)} 
     });
     return res.status(200).json(entryData)
     } catch (err) {
@@ -64,7 +64,9 @@ router.delete("/:id", async (req, res) => {
     try{
     console.log("id to delete:", parseInt(req.body.id))
     Entry.destroy({
-        where: {id: parseInt(req.body.id)} 
+        where: {id: parseInt(req.body.id)},
+        include: [Comment], 
+        onDelete: 'CASCADE'
         });
     return res.status(200).json(req.body)
     } catch (err) {

@@ -27,7 +27,7 @@ Comment.init(
       references: {
         model: "user",
         key: "id",
-        validate: {notNull: true}
+        // validate: {notNull: true}
       },
     },
     entry_id: {
@@ -37,7 +37,7 @@ Comment.init(
         model: "entry",
         key: 'id'
       },
-      validate: {notNull: true}
+      // validate: {notNull: true}
     },
 
     comment_text: {

@@ -1,19 +1,16 @@
-
-
-
 <dir class="d-grid gap-2 col-6 mx-auto">
     <form name="edit-blog" class="edit-entry-form" id="{{user_id}}" blogID="{{blogDetail.id}}">
-        <label for="entry-title">
+        <label for="entry-title" class="fs-5 fw-bold">
            Blog Title:
               </label><br/>
-                    <textarea name="entry-title" id="entry-title" cols="50" rows="1">{{blogDetail.blog_title}}</textarea>
+                    <textarea name="entry-title" id="entry-title" cols="100" rows="1" class="fs-5">{{blogDetail.blog_title}}</textarea>
                     <br/>
                   
-                  <label for="entry-text">
+                  <label for="entry-text"class="fs-5 fw-bold">
                     Blog Text :
                   </label>
                   <br/>
-                  <textarea name ="entry-text" id="entry-text"cols="50" rows="3">{{blogDetail.blog_text}}</textarea>
+                  <textarea name ="entry-text" id="entry-text"cols="100" rows="5" class="fs-5">{{blogDetail.blog_text}}</textarea>
                   <br/>
                 <button type="submit" value="Submit" id="edit-btn" class="btn btn-warning">Update This Blog Post</button>
                 <button type="submit" value="Submit" id="delete-btn" class="btn btn-danger" blog_ID="{{blogDetail.id}}">Delete This Blog Post</button>
