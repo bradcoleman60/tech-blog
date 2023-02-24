@@ -68,7 +68,7 @@ router.post('/login', async (req, res) => {
             console.log("to be saved in session ====>", userData.dataValues.id)
             req.session.user_id = userData.dataValues.id;
             req.session.logged_in = true;
-            res.json({user: userData, message:'You are now logged in'});
+            // res.json({user: userData, message:'You are now logged in'});
             
         });
         res.render('homepage', {
@@ -76,7 +76,7 @@ router.post('/login', async (req, res) => {
           });
 
     } catch (err) {
-        console.log(err)
+        console.log(" This is the error on userRoutes: ======>", err)
         res.status(400).json(err)
     }
 });
