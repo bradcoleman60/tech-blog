@@ -64,16 +64,24 @@ router.post('/login', async (req, res) => {
         }
         
         //This Saves user id and a variable called "logged_in" as true to the session table. 
+
+        req.session.user_id = userData.dataValues.id;
+        req.session.logged_in = true;
+
+
         req.session.save(() => {
             console.log("to be saved in session ====>", userData.dataValues.id)
-            req.session.user_id = userData.dataValues.id;
-            req.session.logged_in = true;
+            // req.session.user_id = userData.dataValues.id;
+            // req.session.logged_in = true;
             // res.json({user: userData, message:'You are now logged in'});
+            res.render('homepage', {
+                logged_in: req.session.logged_in,
+              });
             
-        }).then
-        res.render('homepage', {
-            logged_in: req.session.logged_in,
-          });
+        });
+        // res.render('homepage', {
+        //     logged_in: req.session.logged_in,
+        //   });
 
     } catch (err) {
         console.log(" This is the error on userRoutes: ======>", err)
