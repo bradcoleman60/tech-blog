@@ -70,7 +70,7 @@ router.post('/login', async (req, res) => {
             req.session.logged_in = true;
             // res.json({user: userData, message:'You are now logged in'});
             
-        });
+        }).then
         res.render('homepage', {
             logged_in: req.session.logged_in,
           });
