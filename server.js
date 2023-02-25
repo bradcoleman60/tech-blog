@@ -25,7 +25,9 @@ const exp = require('constants');
 
 const sess = {
     secret: 'Super secret secret',
-    cookie: {},
+    cookie: {
+      maxAge: 1000 * 60 * 10,
+    },
     resave: false,
     saveUninitialized: false,
     store: new SequelizeStore({
