@@ -3,9 +3,6 @@ const User = require('./User');
 const Entry = require('./Entry');
 const Comment = require('./Comment');
 
-// const {User, Entry, Comment} = require("./models")
-// const { Model } = require('sequelize');
-
 //Users have many entries and entries belong to users
 
 User.hasMany(Entry, {

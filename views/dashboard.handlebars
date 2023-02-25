@@ -1,66 +1,63 @@
+{{!-- This renders the logged in user's dash board. This first section is a listing of the user's
+blogs by title, along with an Edit/Delete button --}}
 <div class="w-75 ms-5 align-self-center ">
-
-<div class="container my-5" id="dashboard">
-  <h1>My Blogs</h1>
+  <div class="container my-5" id="dashboard">
+    <h1>My Blogs</h1>
   </div>
-{{#each blogDetail as |post|}}
-<div class="container" name="blog-card">
-  <div class="row border border-primary ">
-    <div class="col-10">
-      <a style="text-decoration: none" href="/blog/{{id}}">
-        <div class="row border border-primary p-3 m-2">
-          <div class="col-md-8 fs-5 fw-bold">{{blog_title}}</div>
-          <div class="col-md-2">{{date_posted}}</div>
-          
-        </div>
-      </a>
-    </div>
-    <div class="col-2">
-      <a style="text-decoration: none" href="/blog/edit/{{id}}">
-      <button class="btn btn-warning" id="edit-btn">Edit / Delete</button>
-      </a>
-    </div>
+  {{#each blogDetail as |post|}}
+  <div class="container" name="blog-card">
+    <div class="row border border-primary ">
+      <div class="col-10">
+        <a style="text-decoration: none" href="/blog/{{id}}">
+          <div class="row border border-primary p-3 m-2">
+            <div class="col-md-8 fs-5 fw-bold">{{blog_title}}</div>
+            <div class="col-md-2">{{date_posted}}</div>
 
+          </div>
+        </a>
+      </div>
+      <div class="col-2">
+        <a style="text-decoration: none" href="/blog/edit/{{id}}">
+          <button class="btn btn-warning" id="edit-btn">Edit / Delete</button>
+        </a>
+      </div>
+
+    </div>
   </div>
-   </div>
   {{/each}}
 
+  {{!-- Below the listing of blogs is a button that can be used to create a new blog posting. This is done through
+  use of a modal --}}
+  <button type="button" class="btn btn-primary my-5" data-bs-toggle="modal" data-bs-target="#exampleModal">Create A New
+    Blog Post</button>
 
-<button type="button" class="btn btn-primary my-5" data-bs-toggle="modal" data-bs-target="#exampleModal">Create A New Blog Post</button>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fs-5 fw-bold" id="exampleModalLabel">New Blog Post</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form name="new-blog-m" class="new-entry-form-m" id="{{user_id}}">
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label fs-5 fw-bold">Title:</label>
+              <input type="text" name="entry-title-m" id="entry-title-m" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label fs-5 fw-bold">Text:</label>
+              <textarea name="entry-text-m" id="entry-text-m" class="form-control"></textarea>
+            </div>
 
-{{!-- <button type="button" class="btn btn-primary my-5" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" >Create A New Blog Post</button> --}}
-
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title fs-5 fw-bold" id="exampleModalLabel">New Blog Post</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Post This Blog</button>
+        </div>
+        </form>
       </div>
-      <div class="modal-body">
-        <form name="new-blog-m" class="new-entry-form-m" id="{{user_id}}">
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label fs-5 fw-bold">Title:</label>
-            <input type="text" name="entry-title-m" id="entry-title-m"  class="form-control" >
-          </div>
-          <div class="mb-3">
-            <label for="message-text" class="col-form-label fs-5 fw-bold">Text:</label>
-            <textarea name="entry-text-m" id="entry-text-m" class="form-control" ></textarea>
-          </div>
-        {{!-- </form> --}}
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Post This Blog</button>
-      </div>
-      </form>
     </div>
   </div>
-</div>
 
 </div>
-
-
-  {{!-- <script src="/js/add-entry.js"> </script> --}}
-  <script src="/js/add-entry-modal.js"> </script>
-  
+<script src="/js/add-entry-modal.js"> </script>

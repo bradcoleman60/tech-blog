@@ -1,7 +1,5 @@
 const  Entry  = require("../models/Entry");
 
-// const  { Entry }  = require('../models');
-
 const entryData = [
   {
     author_id: 1,

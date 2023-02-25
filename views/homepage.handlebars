@@ -1,3 +1,5 @@
+{{!-- This creates the home page after log in and shows all blog posts by all users. 
+This uses a partial named "blog-titles" --}}
 {{#if logged_in}}
 {{#each entriesData as |post|}}
 {{> blog-titles}}

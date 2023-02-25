@@ -4,10 +4,6 @@ const { Model, DataTypes, INTEGER } = require("sequelize");
 // Import connection from config.js
 const sequelize = require("../config/connection.js");
 
-// Require the User model
-// const User = require("./User");
-// const Entry = require("./Entry");
-
 // Initialize Entry model (ie table) by extending off Sequelize's Model Class
 class Comment extends Model {}
 
@@ -15,13 +11,6 @@ class Comment extends Model {}
 
 Comment.init(
   {
-    // id: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    //   primaryKey: true,
-    //   autoIncrement: true,
-    // },
-
     comment_author: {
       type: DataTypes.INTEGER,
       references: {
@@ -37,8 +26,7 @@ Comment.init(
         model: "entry",
         key: 'id'
       },
-      // validate: {notNull: true}
-    },
+      },
 
     comment_text: {
       type: DataTypes.STRING,

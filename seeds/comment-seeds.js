@@ -1,7 +1,5 @@
 const  Comment  = require("../models/Comment");
 
-// const  { Comment }  = require('../models');
-
 const commentData = [
   {
     comment_author: 2,

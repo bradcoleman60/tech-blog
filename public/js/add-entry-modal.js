@@ -1,3 +1,4 @@
+// This function handles the add new entry / blog button on the user's dashboard page
 async function newEntryHandler (event){
     event.preventDefault();
     
@@ -24,13 +25,10 @@ async function newEntryHandler (event){
     
 //if entry is added then the blog detail page will be rerendered 
 if (response.ok){
-    // document.location.replace('/blog/')
     document.location.reload();
 } else {
     alert('failed to load blog entry')
 }
-
-
 }
 
 document.querySelector('.new-entry-form-m').addEventListener('submit', newEntryHandler);

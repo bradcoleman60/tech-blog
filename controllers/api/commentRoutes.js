@@ -1,6 +1,5 @@
+//Define required middleware and models
 const router = require('express').Router();
-
-
 const {User, Entry, Comment} = require('../../models')
 
 // Get all Comments

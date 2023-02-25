@@ -48,8 +48,6 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
     try{
     const updatedEntry = req.body;
-    console.log("THIS IS FROM THE req.body" ,updatedEntry)
-    console.log("this is the entry id:", parseInt(req.body.id))
     const entryData = await Entry.update(updatedEntry, {
         where: {id: parseInt(req.body.id)} 
     });
@@ -62,8 +60,7 @@ router.put("/:id", async (req, res) => {
 // Delete an exiting entry
 router.delete("/:id", async (req, res) => {
     try{
-    console.log("id to delete:", parseInt(req.body.id))
-    Entry.destroy({
+     Entry.destroy({
         where: {id: parseInt(req.body.id)},
         include: [Comment], 
         onDelete: 'CASCADE'
